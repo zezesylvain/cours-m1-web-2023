@@ -8,20 +8,32 @@
     @yield('title')
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    @livewireStyles()
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div style="background-color: blue; height:10.0em;">
+
+        </div>
+    </div>
     <div class="container">
         <div class="row">
+            <div class="col-12" style="text-align: center; font-size:1.4em">
+                <a href="{{ route('home') }}"> Accueil</a> - <a href="{{ route('inscription') }}"> Inscription</a>
+            </div>
             <div class="col-12">
                 <h1 class="entete">
                     {{ $pageTitle ?? "titre de la page"}}
                 </h1>
             </div>
+
                 @yield('contenu')
 
         </div>
     </div>
+    @livewireScripts()
 </body>
 
 </html>

@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
+
+Route::get('/inscription.html', function () {
+    return view('inscription');
+})->name('inscription');
 Route::get('/inserer-ue', [DataController::class, 'storeUe']);
 
 Route::group(['prefix' => 'admin'], function () {
@@ -24,3 +28,4 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/ue', [DataController::class, 'listeUe']);
+//Route::get('/inscription.html', [DataController::class, 'inscription'])->name('inscription');

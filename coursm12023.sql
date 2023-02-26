@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : jeu. 23 fév. 2023 à 12:40
+-- Généré le : dim. 26 fév. 2023 à 16:13
 -- Version du serveur : 10.4.21-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -180,6 +180,7 @@ INSERT INTO `ecues` (`id`, `ue_id`, `nom`, `code`, `cm`, `td`, `tp`, `created_at
 
 CREATE TABLE `etudiants` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
   `nce` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenoms` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -427,6 +428,7 @@ CREATE TABLE `permission_role` (
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
+(1, 3),
 (2, 1),
 (3, 1),
 (4, 1),
@@ -531,7 +533,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Administrator', '2023-02-22 11:03:30', '2023-02-22 11:03:30'),
-(2, 'user', 'Normal User', '2023-02-22 11:03:30', '2023-02-22 11:03:30');
+(2, 'user', 'Normal User', '2023-02-22 11:03:30', '2023-02-22 11:03:30'),
+(3, 'Etudiant', 'Etudiant', '2023-02-26 15:01:19', '2023-02-26 15:01:19');
 
 -- --------------------------------------------------------
 
@@ -647,13 +650,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `users`
---
-
-INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Sylvain ZEZE', 's.zeze@vzsite.com', 'users/February2023/WMOsO58TSkJUo7LkH7Xx.jpeg', NULL, '$2y$10$UDgIEZNUdUpF2wIZ2vEqKOvzR.PtvJgqQRoHOBML8cx8X95BGElJi', NULL, '{\"locale\":\"en\"}', '2023-02-22 11:04:40', '2023-02-22 11:09:31');
 
 -- --------------------------------------------------------
 
@@ -841,7 +837,7 @@ ALTER TABLE `ecues`
 -- AUTO_INCREMENT pour la table `etudiants`
 --
 ALTER TABLE `etudiants`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `etudiant_ue`
@@ -895,7 +891,7 @@ ALTER TABLE `retards`
 -- AUTO_INCREMENT pour la table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `seances`
@@ -925,7 +921,7 @@ ALTER TABLE `ues`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Contraintes pour les tables déchargées
