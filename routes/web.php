@@ -23,6 +23,14 @@ Route::get('/inscription.html', function () {
 })->name('inscription');
 Route::get('/inserer-ue', [DataController::class, 'storeUe']);
 
+Route::get('/ue.html', function () {
+    return view('ue');
+})->name('ue');
+Route::get(
+    '/etudiant/{nce?}',
+    [DataController::class, 'letudiant']
+)->name('etudiant');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

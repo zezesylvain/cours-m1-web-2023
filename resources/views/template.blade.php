@@ -21,7 +21,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12" style="text-align: center; font-size:1.4em">
-                <a href="{{ route('home') }}"> Accueil</a> - <a href="{{ route('inscription') }}"> Inscription</a>
+                <a href="{{ route('home') }}"> Accueil</a>-
+                <a href="{{ route('inscription') }}"> Inscription</a>-
+                <a href="{{ route('etudiant') }}"> Etudiant</a>
             </div>
             <div class="col-12">
                 <h1 class="entete">

@@ -22,7 +22,7 @@
             this.passConfirm = false;
             this.pass = Boolean(this.mot2pass) && Boolean(this.mot2pass2);
             this.passConfirm = this.pass && (this.mot2pass == this.mot2pass2);
-            console.log(this.passConfirm);
+
         },
         isEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,20 +31,21 @@
         verifEmail(){
             this.emailOK = checkEmail(this.email);
         },
-        storeData: async function(){
+        EnregisterData: async function(){
                 await @this.storeData().then(value => {
                     data = JSON.parse(value);
                 });
             }
 
     }">
+
         <div class="container">
             <h1>
                 Inscription des étudiants
             </h1>
             <template x-if="inscription_ok">
-                <h2>
-                    Merci vos données ont été enregistrées
+                <h2 x-text="'Merci vos données ont été enregistrées'">
+
                 </h2>
             </template>
             <template x-if="!inscription_ok">
@@ -127,7 +128,7 @@
                     <template x-if="isEmail(email) && passConfirm && etudiantOK">
                         <div class="row" style="padding: 1.0em;">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="width: 100%;" @click="storeData()">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" style="width: 100%;" @click="EnregisterData()">
                                     Valider
                                 </button>
                             </div>

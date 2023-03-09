@@ -23,13 +23,16 @@ class InscrptionEtudiant extends Component
 
 
 
+
     public function mount(){
         $this->makeData();
     }
     private function makeData()
     {
-        $this->lesEtudiants = Arr::keyBy(Etudiant::get()->toArray(), 'nce');
+        $et = Etudiant::get()->toArray();
+        $this->lesEtudiants = Arr::keyBy($et, 'nce');
         $this->lesNces = array_keys($this->lesEtudiants);
+        //dd($et, $this->lesEtudiants);
     }
     private function verifNCE(){
         $this->nceOK = !in_array($this->nce, $this->lesNces);

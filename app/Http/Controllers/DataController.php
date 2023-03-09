@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Etudiant;
 use App\Models\Ue;
 use Illuminate\Http\Request;
 
@@ -21,5 +22,21 @@ class DataController extends Controller
         $data = Ue::with('ecues')->get()->toArray();
 
         return view('ue', ['donnees' => $data]);
+    }
+
+    public function etudiant(){
+        $data = Etudiant::get()->toArray();
+        $pageTitle = 'Etudiants';
+        return view('etudiant', compact('data', 'pageTitle'));
+    }
+
+    public function letudiant($nce = '')
+    {
+        if(!$nce):
+            return $this->etudiant();
+        endif;
+        $data = Etudiant::where('nce', $nce)->get()->toArray();
+        $pageTitle = 'Etudiants';
+        return view('etudiant', compact('data', 'pageTitle'));
     }
 }
