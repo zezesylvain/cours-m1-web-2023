@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @yield('title')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <script src="//unpkg.com/alpinejs" defer></script>
@@ -23,7 +24,8 @@
             <div class="col-12" style="text-align: center; font-size:1.4em">
                 <a href="{{ route('home') }}"> Accueil</a>-
                 <a href="{{ route('inscription') }}"> Inscription</a>-
-                <a href="{{ route('etudiant') }}"> Etudiant</a>
+                <a href="{{ route('etudiant') }}"> Etudiant</a>-
+                <a href="{{ route('ue') }}"> Gestion des UEs</a>
             </div>
             <div class="col-12">
                 <h1 class="entete">

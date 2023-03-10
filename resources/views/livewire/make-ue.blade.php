@@ -81,6 +81,7 @@
                                 <button class="btn btn-success" style="width: 100%;" @click="ajouterEcue(index)">OK</button>
                             </div>
                         </div>
+                        <button class="btn btn-primary" style="width: 100%;" @click="EnregisterData()">Enregistrez les données</button>
                     </template>
                 </div>
             </template>
