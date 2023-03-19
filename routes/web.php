@@ -26,6 +26,9 @@ Route::get('/inserer-ue', [DataController::class, 'storeUe']);
 Route::get('/ue.html', function () {
     return view('ue');
 })->name('ue');
+Route::get('/Inscription-pedagogique.html', function () {
+    return view('Inscription-pedagogique');
+})->name('Inscription-pedagogique');
 Route::get(
     '/etudiant/{nce?}',
     [DataController::class, 'letudiant']
@@ -36,4 +39,4 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Route::get('/ue', [DataController::class, 'listeUe']);
-//Route::get('/inscription.html', [DataController::class, 'inscription'])->name('inscription');
+Route::get('/appel.html', [DataController::class, 'makeAppel'])->name('etudiant-ue');

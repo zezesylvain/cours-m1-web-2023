@@ -14,7 +14,6 @@
         pass: false,
         passConfirm: false,
         etudiantOK: false,
-
         checkInfo(){
             this.etudiantOK = Boolean(this.prenoms) && Boolean(this.nom);
         },
@@ -22,7 +21,6 @@
             this.passConfirm = false;
             this.pass = Boolean(this.mot2pass) && Boolean(this.mot2pass2);
             this.passConfirm = this.pass && (this.mot2pass == this.mot2pass2);
-
         },
         isEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\']+(\.[^<>()[\]\\.,;:\s@\']+)*)|(\'.+\'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -36,7 +34,6 @@
                     data = JSON.parse(value);
                 });
             }
-
     }">
 
         <div class="container">

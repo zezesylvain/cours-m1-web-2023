@@ -39,4 +39,7 @@ class DataController extends Controller
         $pageTitle = 'Etudiants';
         return view('etudiant', compact('data', 'pageTitle'));
     }
+    public function makeAppel(){
+        return view('appel');
+    }
 }
