@@ -23,10 +23,10 @@
         <div class="row">
             <div class="col-12" style="text-align: center; font-size:1.4em">
                 <a href="{{ route('home') }}"> Accueil</a> -
-                <a href="{{ route('inscription') }}"> Inscription</a>-
-                <a href="{{ route('etudiant') }}"> Etudiant</a>-
-                <a href="{{ route('etudiant-ue') }}"> Groupe</a>
-                <a href="{{ route('Inscription-pedagogique') }}"> Inscription pédagogique</a>
+                <a href="{{ route('inscription') }}"> Inscription</a> -
+                <a href="{{ route('etudiant') }}"> Etudiant</a> -
+                <a href="{{ route('etudiant-ue') }}"> Inscription par lot</a> -
+                <a href="{{ route('Inscription-pedagogique') }}"> Inscription pédagogique </a> -
                 <a href="{{ route('ue') }}"> Gestion des UEs</a>
             </div>
             <div class="col-12">
