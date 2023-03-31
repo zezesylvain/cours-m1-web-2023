@@ -26,7 +26,8 @@
         this.projectUser();
     },
     projectUser(){
-        this.etudiantDuProjet = this.lesProjets[this.currentProject]['etudiant_id'];
+        let edp = this.lesProjets[this.currentProject]['etudiant_id'];
+        this.etudiantDuProjet = Boolean(edp) ? edp : 0;
         this.cssClass = this.etudiantDuProjet == this.eid ? ' moi' : '';
     },
 
