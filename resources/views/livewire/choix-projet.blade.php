@@ -115,9 +115,9 @@ x-init="()=>{
     <div class="col-md-8">
         <div class="row">
             <div class="col-6 col-md-6">
-                <template x-if="!Boolean(etudiantDuProjet)">
+                <template x-if="parseInt(etudiantDuProjet) == 0">
                     <div>
-                        <template x-if="Boolean(monProjet)">
+                        <template x-if="parseInt(monProjet) != 0">
                             <template x-if="monProjet != currentProject">
                                 <div>
                                     <h3>
@@ -130,7 +130,7 @@ x-init="()=>{
                                 </div>
                             </template>
                         </template>
-                        <template x-if="!Boolean(monProjet)">
+                        <template x-if="parseInt(monProjet) == 0">
                             <div>
                                 <h3>
                                     Vous pouvez choisir ce projet
