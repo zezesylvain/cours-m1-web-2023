@@ -142,7 +142,7 @@ x-init="()=>{
                         </template>
                     </div>
                 </template>
-                <template x-if="Boolean(etudiantDuProjet)">
+                <template x-if="parseInt(etudiantDuProjet) >= 1">
                     <div>
                         <h3>
                             Projet choisi par: <span x-text="lesEtudiants[etudiantDuProjet]['nom'] + ' ' + lesEtudiants[etudiantDuProjet]['prenoms']"></span>
