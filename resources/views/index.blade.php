@@ -2,6 +2,30 @@
 
 @section('contenu')
     <div class="col-12">
+        <h2>TP du 30 mars 2023</h2>
+        <h3>Création de l'emploi du temps</h3>
+        <ul>
+            <li>
+                Séance:
+                <ul>
+                    <li>définition</li>
+                    <li>Paramètres</li>
+                    <li>Fonction pour création d'une séance</li>
+                    <li>Fonction pour création de plusieurs séances</li>
+                    <li>Contraintes (volume horaire)</li>
+                </ul>
+            </li>
+            <li>
+                Appel:
+                <ul>
+                    <li>Liste des étudiants</li>
+                    <li>Faire l'appel</li>
+                    <li>Intégrer les retardataires</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-12">
         <ul class="list-group">
             <li class="list-group-item list-group-item-warning">
                 <h2>Projets</h2>
@@ -135,7 +159,6 @@
                 php artisan migrate
                 php artisan make:controller DataController
 
-                php artisan make:migration create_table_etudiant_ue --table=etudiant_ue
             </div>
         </div>
     </div>
@@ -144,4 +167,5 @@
 
 @section('title')
 <title>Cours de WEB Master 1 Gi & MIAGE 2022-2023</title>
+
 @endsection

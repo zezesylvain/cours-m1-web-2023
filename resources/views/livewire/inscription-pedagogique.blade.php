@@ -65,6 +65,7 @@
     }" x-init="()=>{
         selectUe(lesUes[0]);
     }">
+
         <div class="row">
             <template x-if="Boolean(message)">
                 <div class="col-12 text-center" >
@@ -80,9 +81,9 @@
                 <div>
                     <ol>
                         <template x-for="iid in lesUes">
-                            <li x-bind:class=" currentUe == iid ? 'list-group-item active ' : 'list-group-item ' ">
+                            <li x-bind:class=" currentUe == iid ? 'list-group-item active ' : 'list-group-item ' " @click="selectUe(iid)">
                                 <span class="lien" x-text="ues[iid]['nom'] + ' (' + ues[iid]['code'] + ')'"
-                                    @click="selectUe(iid)"></span>
+                                    ></span>
                             </li>
                         </template>
                     </ol>
@@ -96,9 +97,9 @@
                 <div>
                     <ol>
                         <template x-for="iid in currentEtudiants">
-                                <li>
+                                <li @click="removeEtudiantInUe(iid)">
                                     <span x-text="etudiants[iid]['nom'] + ' ' + etudiants[iid]['prenoms']"
-                                        @click="removeEtudiantInUe(iid)"></span>
+                                        ></span>
                                 </li>
                         </template>
                     </ol>
@@ -113,10 +114,10 @@
                 <div>
                     <ol>
                         <template x-for="iid in etudiantNotInCurrentUe">
-                            <li>
+                            <li @click="addEtudiantInUe(iid)">
                                 <span class="lien"
                                     x-text="etudiants[iid]['nom'] + ' ' + etudiants[iid]['prenoms']"
-                                    @click="addEtudiantInUe(iid)"></span>
+                                    ></span>
                             </li>
                         </template>
                     </ol>

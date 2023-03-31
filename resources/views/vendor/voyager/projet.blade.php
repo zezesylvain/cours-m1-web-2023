@@ -1,4 +1,4 @@
 @extends('vendor.voyager.template')
 @section('contenu')
-    @livewire('make-ue')
+    @livewire('choix-projet')
 @stop

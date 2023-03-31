@@ -4,8 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Http\Controllers\UeController;
 use App\Models\Etudiant;
+use App\Models\Moncompte;
 use App\Models\Ue;
+use App\Models\User;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class InscriptionPedagogique extends Component
@@ -35,14 +38,15 @@ class InscriptionPedagogique extends Component
 
     public function mount(){
         $this->makeData();
+        $seconde = time();
+        $temps = $seconde / 60 / 60 / 24 / 365.25 ;
+        dd($seconde, $temps);
     }
     public function makeData()
     {
-        $data = $this->getStudentByUe();
-        extract($data);
-        $this->etudiantsDesUe = $etudiantsDesUe;
-        $this->ues = $ues;
-        $this->lesUes = array_keys($ues);
+        $this->getStudentByUe();
+
+        $this->lesUes = array_keys($this->ues);
         $this->etudiants = Arr::keyBy(Etudiant::get()->toArray(), 'id');
         $this->lesEtudiants = array_keys($this->etudiants);
 
@@ -50,12 +54,13 @@ class InscriptionPedagogique extends Component
 
     private function getStudentByUe()
     {
-        $ues = Arr::keyBy(Ue::with('etudiants')->get()->toArray(), 'id');
-        $etudiantsDesUe = [];
-        foreach ($ues as $ueid => $ue) :
-            $etudiantsDesUe[$ueid] = array_keys(Arr::keyBy($ue['etudiants'], 'id')) ?? [];
+        $this->ues = Arr::keyBy(Ue::with('etudiants')->get()->toArray(), 'id');
+        $this->etudiantsDesUe = [];
+        foreach ($this->ues as $ueid => $ue) :
+            $this->etudiantsDesUe[$ueid] = array_keys(Arr::keyBy($ue['etudiants'], 'id')) ?? [];
         endforeach;
-        return compact('ues', 'etudiantsDesUe');
+        //return compact('ues', 'etudiantsDesUe');
+        //['ues' => $ues, 'etudiantsDesUe' => $etudiantsDesUe];
     }
     public function storeData(){
         UeController::inscrireUnEtudiantDansUe($this->etudiantsDesUe);

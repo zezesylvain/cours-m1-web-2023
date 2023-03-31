@@ -12,4 +12,19 @@ class Etudiant extends Model
     public function ues(){
         return $this->belongsToMany(Ue::class);
     }
+
+    public function moncompte()
+    {
+        return $this->hasOne(Moncompte::class);
+    }
+
+    public function projet()
+    {
+        return $this->hasOne(Projet::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

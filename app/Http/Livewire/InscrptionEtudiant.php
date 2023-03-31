@@ -55,7 +55,7 @@ class InscrptionEtudiant extends Component
         $us = new User();
         $us->name = $this->prenoms . " " . $this->nom;
         $us->email = $this->email;
-        $us->role = 3;
+        $us->role_id = 3;
         $us->password = Hash::make($this->mot2pass);
         $us->save();
         return $us->id;

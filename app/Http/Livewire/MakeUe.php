@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Ecue;
+use App\Models\Ue;
 use Livewire\Component;
 
 class MakeUe extends Component
@@ -18,7 +20,19 @@ class MakeUe extends Component
         'cm' => 0, 'td' => 0, 'tp' => 0];
     }
     public function storeUE(){
-        dd($this->nomUe, $this->codeUe, $this->lesEcues);
+        $nue = new Ue;
+        $nue->nom = $this->nomUe;
+        $nue->code = $this->codeUe;
+        $nue->save();
+        $ueId = $nue->id;
+        foreach($this->lesEcues AS $ecue):
+            $lecue = new Ecue;
+            $lecue->ue_id = $ueId;
+            foreach($this->tabInitiale AS $key => $v):
+                $lecue->$key = $ecue[$key] ;
+            endforeach;
+            $lecue->save();
+        endforeach;
     }
     public function render()
     {

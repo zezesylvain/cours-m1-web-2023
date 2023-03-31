@@ -1,0 +1,21 @@
+div ol li.list-group-item.moi{
+    background-color: green ;
+    color: white;
+}
+.text-bold{
+    font-weight: bold;
+    font-size: 2.0em;
+}
+.text-blue{
+    color: blue;
+}
+input.form-control,
+textarea.form-control{
+    border-color: blue;
+}
+
+span.text-small{
+    font-weight:100;
+    font-size: 1.0em;
+    color: black;
+}

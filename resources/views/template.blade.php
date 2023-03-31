@@ -26,8 +26,9 @@
                 <a href="{{ route('inscription') }}"> Inscription</a> -
                 <a href="{{ route('etudiant') }}"> Etudiant</a> -
                 <a href="{{ route('etudiant-ue') }}"> Inscription par lot</a> -
-                <a href="{{ route('Inscription-pedagogique') }}"> Inscription pédagogique </a> -
-                <a href="{{ route('ue') }}"> Gestion des UEs</a>
+                <a href="{{ route('Inscription-pedagogique') }}"> Inscription pédagogique </a>-
+                <a href="{{ route('ue') }}"> Gestion des UEs</a>-
+                <a href="{{ env("APP_URL") }}/admin"> Se connecter</a>
             </div>
             <div class="col-12">
                 <h1 class="entete">

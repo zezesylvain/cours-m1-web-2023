@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Route;
+use TCG\Voyager\Facades\Voyager;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +42,13 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/ue', [DataController::class, 'listeUe']);
 Route::get('/appel.html', [DataController::class, 'makeAppel'])->name('etudiant-ue');
+Route::group(['prefix' => 'admin', 'middleware' => 'voyager.auth'], function () {
+    Route::get('page-sections/order/{page_id?}', [PageSectionOrderController::class, 'order'])->name('voyager.page-sections.order');
+    Route::post('delete/{slug}/{sid}', [AdminPageController::class, 'deleteData'])->name('deleteData');
+    $tab = [
+        'ues', 'projets', 'pedagogie',  'seances'
+    ];
+    foreach ($tab as $slug) :
+        Route::get($slug, [AdminController::class, $slug])->name("voyager.$slug.index");
+    endforeach;
+});
