@@ -18,6 +18,7 @@ class ChoixProjet extends Component
     public $eid;
     public $roleId ;
     public $currentProject;
+    public $newProject = [];
     public function mount(){
         $this->makeData();
     }
@@ -30,6 +31,13 @@ class ChoixProjet extends Component
         $moi = Etudiant::with('projet')->where('user_id', Auth::user()->id)->get()->toArray()[0] ?? [];
         $this->monProjet = $moi['projet']['id'] ?? 0;
         $this->eid = $moi['id'] ?? 0 ;
+        $this->initProject();
+    }
+    private function initProject(){
+        $this->newProject = [
+            'nom' => '', 'title' => '',
+            'description' => '', 'commentaire' => ''
+        ];
     }
     public function validerMonProjet(){
         Projet::whereId($this->monProjet)->update([
@@ -46,6 +54,24 @@ class ChoixProjet extends Component
         $this->makeData();
         $data = ['response' => 1, 'message' => 'Données Mises à jour'];
         return json_encode($data);
+    }
+    public function addNewProject(){
+        extract($this->newProject);
+        $var = $nom . $title . $description ;
+        if($var):
+            $neP = new Projet;
+            $neP->nom = $nom;
+            $neP->title = $title;
+            $neP->description = $description;
+            $neP->commentaire = $commentaire;
+            $neP->etudiant_id = $this->eid;
+            Projet::whereEtudiantId($this->eid)->update(['etudiant_id' => 0]);
+            $neP->save();
+            $this->makeData();
+            $data = ['response' => 1, 'message' => 'Données Mises à jour'];
+            return json_encode($data);
+
+        endif;
     }
     public function changerDeProjet(){
         Projet::whereId($this->monProjet)->update([

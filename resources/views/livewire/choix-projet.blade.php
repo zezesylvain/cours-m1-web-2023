@@ -7,6 +7,7 @@
     currentProject: @entangle('currentProject').defer,
     eid: @entangle('eid').defer,
     roleId: @entangle('roleId').defer,
+    newProject: @entangle('newProject').defer,
     message: '',
     changement: 0,
     etudiantDuProjet: 0,
@@ -68,6 +69,14 @@
             this.message = data.message;
             this.monProjet = this.currentProject;
             this.initialisation();
+        });
+    },
+    validerNewProject:async function(){
+        await @this.addNewProject().then(value => {
+        data = JSON.parse(value);
+        response = data.response;
+        this.message = data.message;
+        this.initialisation();
         });
     },
     initialisation(){
@@ -177,6 +186,13 @@ x-init="()=>{
             </button>
         </div>
     </template>
+    <template x-if="parseInt(monProjet) == 0">
+        <div class="col-sm-12">
+            <a href="#" class="btn btn-primary solid" data-toggle="modal" data-target="#newProject-modal">
+                Nouveau projet
+            </a>
+            @include("modals.projet", ['width' => 800])
+        </div>
+    </template>
 </div>
-
 </div>
