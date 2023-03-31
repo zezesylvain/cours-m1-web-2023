@@ -29,6 +29,7 @@
         this.etudiantDuProjet = this.lesProjets[this.currentProject]['etudiant_id'];
         this.cssClass = this.etudiantDuProjet == this.eid ? ' moi' : '';
     },
+
     classCss(pid){
         if(pid == this.monProjet){
             return 'moi';
