@@ -41,7 +41,7 @@ class ChoixProjet extends Component
     }
     public function validerMonProjet(){
         Projet::whereId($this->monProjet)->update([
-                        'etudiant_id' => $this->lesProjets[$this->monProjet]['description'],
+                        'description' => $this->lesProjets[$this->monProjet]['description'],
                         'commentaire' => $this->lesProjets[$this->monProjet]['commentaire']
                 ]);
         $data = ['response' => 1, 'message' => 'Données Mises à jour'];
