@@ -40,7 +40,7 @@ class InscriptionPedagogique extends Component
         $this->makeData();
         $seconde = time();
         $temps = $seconde / 60 / 60 / 24 / 365.25 ;
-        dd($seconde, $temps);
+        //dd($seconde, $temps);
     }
     public function makeData()
     {
